@@ -1,0 +1,135 @@
+// laba_2_kyrs.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include <iostream>
+#include <time.h>
+#include <locale>
+
+using namespace std;
+
+int* func(int size) {
+
+	int* arr = new int(size);
+
+	return arr;
+
+}
+
+struct Student {
+	int age;
+	string name;
+};
+
+
+bool Find(Student* a, int age, string name, int size) {
+
+
+	for (int i = 0; i != size; i++) {
+
+		if (a[i].age == age && a[i].name == name) return 1;
+
+	}
+
+	return 0;
+}
+
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+
+	// задание 1
+	int arr[10];
+
+	for (int i = 0; i != 10; i++) { //задание 2
+		
+		arr[i] = rand() % 101;
+
+
+		cout << arr[i] << endl;
+	}
+
+	int flag_min = arr[0];
+	int flag_max = arr[0];
+
+	for (int i = 1; i != 10; i++) {
+
+		if (flag_min > arr[i]) {
+			flag_min = arr[i];
+		}
+
+		if (flag_max < arr[i]) {
+			flag_max = arr[i];
+		}
+	}
+
+
+	cout << "Макс элемент = " << flag_max << endl;
+	cout << "Мин элемент = " << flag_min << endl;
+	// конец задание 1
+
+	//задание 3
+
+
+	int g;
+	cout << "Введите размер массива: ";
+	cin >> g;
+
+
+	int* arr1 = func(g);
+
+	//задание 4
+
+	int arr2[10][10];
+
+	for (int i = 0; i != 10; i++) {
+		for (int j = 0; j != 10; j++) {
+			arr2[i][j] = rand() % 101;
+			cout << arr2[i][j] << endl;
+		}
+		cout << endl;
+	}
+
+
+	int sum_col = 0;
+	int sum_row = 0;
+
+	for (int i = 0; i != 10; i++) {
+		for (int j = 0; j != 10; j++) {
+			sum_col += arr2[i][j];
+		}
+
+		cout << "Столбец №" << i << " = " << sum_col << endl;
+		sum_col = 0;
+
+	}
+
+	for (int i = 0; i != 10; i++) {
+		for (int j = 0; j != 10; j++) {
+			sum_row += arr2[j][i];
+		}
+
+		cout << "Строка №" << i << " = " << sum_row << endl;
+		sum_row = 0;
+
+	}
+
+
+	Student arr3[3];
+
+	for (int i = 0; i != 3; i++) {
+
+		cout << "Введите возраст: ";
+		cin >> arr3[i].age;
+
+		cout << "Введите Имя черта: ";
+		cin >> arr3[i].name;
+
+	}
+	
+	cout << Find(arr3, arr3[1].age, arr3[1].name, 3) << endl;
+
+
+	return 0;
+}
