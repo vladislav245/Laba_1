@@ -116,20 +116,39 @@ int main()
 	}
 
 
-	Student arr3[3];
-
-	for (int i = 0; i != 3; i++) {
-
-		cout << "Введите возраст: ";
-		cin >> arr3[i].age;
-
-		cout << "Введите Имя черта: ";
-		cin >> arr3[i].name;
-
+	struct student {
+		char famil[20], name[20], facult[20];
+	}stud[3];
+	char s1[20];
+	char s2[20];
+	char s3[20];
+	int i;
+	for (i = 0; i < 3; i++)
+	{
+		printf("Введите имя студента:\n");
+		scanf_s("%s", &stud[i].famil, 20);
+		printf("Введите фамилию студента %s:\n", stud[i].famil);
+		scanf_s("%s", &stud[i].name, 20);
+		printf("Введите возраст студента %s %s:\n", stud[i].famil, stud[i].name);
+		scanf_s("%s", &stud[i].facult, 20);
 	}
-	
-	cout << Find(arr3, arr3[1].age, arr3[1].name, 3) << endl;
-
-
+	system("cls");
+	printf("Введите имя, фамилию и возраст, которого хотите найти:\n");
+	scanf_s("%s", &s1, 20);
+	scanf_s("%s", &s2, 20);
+	scanf_s("%s", &s3, 20);
+	for (i = 0; i < 3; i++) {
+		if (strcmp(s1, stud[i].famil) == 0 || strcmp(s2, stud[i].name) == 0 || strcmp(s3, stud[i].facult) == 0)
+		{
+			printf("%s %s %s", stud[i].famil, stud[i].name, stud[i].facult);
+		}
+		else {
+			cout << "Не найден" << endl;
+		}
+	}
 	return 0;
 }
+
+
+
+
